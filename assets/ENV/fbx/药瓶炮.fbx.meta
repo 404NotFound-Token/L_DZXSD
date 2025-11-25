@@ -1,0 +1,206 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "99c3e3a1-2c3d-4158-b24a-1565ac245d42",
+  "files": [
+    "__original-animation-0.cconb"
+  ],
+  "subMetas": {
+    "412aa": {
+      "importer": "gltf-mesh",
+      "uuid": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@412aa",
+      "displayName": "",
+      "id": "412aa",
+      "name": "对象025.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 730
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "82f1f": {
+      "importer": "gltf-mesh",
+      "uuid": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@82f1f",
+      "displayName": "",
+      "id": "82f1f",
+      "name": "对象032.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 428
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "73b7f": {
+      "importer": "gltf-animation",
+      "uuid": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@73b7f",
+      "displayName": "",
+      "id": "73b7f",
+      "name": "Take 001.animation",
+      "userData": {
+        "gltfIndex": 0,
+        "wrapMode": 2,
+        "sample": 30,
+        "span": {
+          "from": 0,
+          "to": 8.300000190734863
+        },
+        "events": []
+      },
+      "ver": "1.0.17",
+      "imported": true,
+      "files": [
+        ".cconb"
+      ],
+      "subMetas": {}
+    },
+    "98ee4": {
+      "importer": "gltf-embeded-image",
+      "uuid": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@98ee4",
+      "displayName": "",
+      "id": "98ee4",
+      "name": "贴图 #21.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "a4d9b": {
+      "importer": "texture",
+      "uuid": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@a4d9b",
+      "displayName": "",
+      "id": "a4d9b",
+      "name": "贴图 #21.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@98ee4"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "07867": {
+      "importer": "gltf-material",
+      "uuid": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@07867",
+      "displayName": "",
+      "id": "07867",
+      "name": "Material #105.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7c4ed": {
+      "importer": "gltf-scene",
+      "uuid": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@7c4ed",
+      "displayName": "",
+      "id": "7c4ed",
+      "name": "药瓶炮.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "贴图 #21",
+        "uri": "99c3e3a1-2c3d-4158-b24a-1565ac245d42@98ee4"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "animationImportSettings": [
+      {
+        "name": "Take 001",
+        "duration": 8.300000190734863,
+        "fps": 30,
+        "splits": [
+          {
+            "name": "Take 001",
+            "from": 0,
+            "to": 8.300000190734863,
+            "wrapMode": 2,
+            "previousId": "73b7f"
+          }
+        ]
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "99c3e3a1-2c3d-4158-b24a-1565ac245d42@412aa",
+        "99c3e3a1-2c3d-4158-b24a-1565ac245d42@82f1f"
+      ],
+      "skeletons": [],
+      "textures": [
+        "99c3e3a1-2c3d-4158-b24a-1565ac245d42@a4d9b"
+      ],
+      "materials": [
+        "99c3e3a1-2c3d-4158-b24a-1565ac245d42@07867"
+      ],
+      "scenes": [
+        "99c3e3a1-2c3d-4158-b24a-1565ac245d42@7c4ed"
+      ]
+    }
+  }
+}

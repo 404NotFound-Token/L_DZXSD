@@ -1,0 +1,165 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "f47ea35a-d092-4c00-9459-a8eea54634e5",
+  "files": [],
+  "subMetas": {
+    "b5faa": {
+      "importer": "gltf-mesh",
+      "uuid": "f47ea35a-d092-4c00-9459-a8eea54634e5@b5faa",
+      "displayName": "",
+      "id": "b5faa",
+      "name": "polySurface17.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 170
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d03e4": {
+      "importer": "gltf-mesh",
+      "uuid": "f47ea35a-d092-4c00-9459-a8eea54634e5@d03e4",
+      "displayName": "",
+      "id": "d03e4",
+      "name": "polySurface16.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 728
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "adacb": {
+      "importer": "gltf-embeded-image",
+      "uuid": "f47ea35a-d092-4c00-9459-a8eea54634e5@adacb",
+      "displayName": "",
+      "id": "adacb",
+      "name": "file2.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "e873a": {
+      "importer": "texture",
+      "uuid": "f47ea35a-d092-4c00-9459-a8eea54634e5@e873a",
+      "displayName": "",
+      "id": "e873a",
+      "name": "file2.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "f47ea35a-d092-4c00-9459-a8eea54634e5@adacb"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "55b43": {
+      "importer": "gltf-material",
+      "uuid": "f47ea35a-d092-4c00-9459-a8eea54634e5@55b43",
+      "displayName": "",
+      "id": "55b43",
+      "name": "lambert3.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9ccf": {
+      "importer": "gltf-scene",
+      "uuid": "f47ea35a-d092-4c00-9459-a8eea54634e5@f9ccf",
+      "displayName": "",
+      "id": "f9ccf",
+      "name": "箭塔.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "file2",
+        "uri": "f47ea35a-d092-4c00-9459-a8eea54634e5@adacb"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "f47ea35a-d092-4c00-9459-a8eea54634e5@b5faa",
+        "f47ea35a-d092-4c00-9459-a8eea54634e5@d03e4"
+      ],
+      "skeletons": [],
+      "textures": [
+        "f47ea35a-d092-4c00-9459-a8eea54634e5@e873a"
+      ],
+      "materials": [
+        "f47ea35a-d092-4c00-9459-a8eea54634e5@55b43"
+      ],
+      "scenes": [
+        "f47ea35a-d092-4c00-9459-a8eea54634e5@f9ccf"
+      ]
+    }
+  }
+}

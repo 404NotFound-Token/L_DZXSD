@@ -1,0 +1,96 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "54e9ae2d-6c83-4317-8df7-b9d65a81c740",
+  "files": [],
+  "subMetas": {
+    "43b29": {
+      "importer": "gltf-mesh",
+      "uuid": "54e9ae2d-6c83-4317-8df7-b9d65a81c740@43b29",
+      "displayName": "",
+      "id": "43b29",
+      "name": "yingdi.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 594
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d90a4": {
+      "importer": "gltf-material",
+      "uuid": "54e9ae2d-6c83-4317-8df7-b9d65a81c740@d90a4",
+      "displayName": "",
+      "id": "d90a4",
+      "name": "01 - Default.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d8e6c": {
+      "importer": "gltf-scene",
+      "uuid": "54e9ae2d-6c83-4317-8df7-b9d65a81c740@d8e6c",
+      "displayName": "",
+      "id": "d8e6c",
+      "name": "yingdi.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "54e9ae2d-6c83-4317-8df7-b9d65a81c740@43b29"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "54e9ae2d-6c83-4317-8df7-b9d65a81c740@d90a4"
+      ],
+      "scenes": [
+        "54e9ae2d-6c83-4317-8df7-b9d65a81c740@d8e6c"
+      ]
+    }
+  }
+}

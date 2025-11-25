@@ -1,0 +1,146 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "ffea5e8a-653c-4542-81a7-bed44eff28a1",
+  "files": [],
+  "subMetas": {
+    "8772a": {
+      "importer": "gltf-mesh",
+      "uuid": "ffea5e8a-653c-4542-81a7-bed44eff28a1@8772a",
+      "displayName": "",
+      "id": "8772a",
+      "name": "low:polySurface59.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 738
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9b66": {
+      "importer": "gltf-embeded-image",
+      "uuid": "ffea5e8a-653c-4542-81a7-bed44eff28a1@f9b66",
+      "displayName": "",
+      "id": "f9b66",
+      "name": "cao_albedo_2.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "14c55": {
+      "importer": "texture",
+      "uuid": "ffea5e8a-653c-4542-81a7-bed44eff28a1@14c55",
+      "displayName": "",
+      "id": "14c55",
+      "name": "cao_albedo_2.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "ffea5e8a-653c-4542-81a7-bed44eff28a1@f9b66"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0862f": {
+      "importer": "gltf-material",
+      "uuid": "ffea5e8a-653c-4542-81a7-bed44eff28a1@0862f",
+      "displayName": "",
+      "id": "0862f",
+      "name": "low:initialShadingGroup1.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "3db51": {
+      "importer": "gltf-scene",
+      "uuid": "ffea5e8a-653c-4542-81a7-bed44eff28a1@3db51",
+      "displayName": "",
+      "id": "3db51",
+      "name": "草.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "cao_albedo_2",
+        "uri": "ffea5e8a-653c-4542-81a7-bed44eff28a1@f9b66"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "ffea5e8a-653c-4542-81a7-bed44eff28a1@8772a"
+      ],
+      "skeletons": [],
+      "textures": [
+        "ffea5e8a-653c-4542-81a7-bed44eff28a1@14c55"
+      ],
+      "materials": [
+        "ffea5e8a-653c-4542-81a7-bed44eff28a1@0862f"
+      ],
+      "scenes": [
+        "ffea5e8a-653c-4542-81a7-bed44eff28a1@3db51"
+      ]
+    }
+  }
+}

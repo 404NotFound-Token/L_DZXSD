@@ -1,0 +1,146 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "75e61a65-3869-4f62-bce2-c91711ea2944",
+  "files": [],
+  "subMetas": {
+    "b85b1": {
+      "importer": "gltf-mesh",
+      "uuid": "75e61a65-3869-4f62-bce2-c91711ea2944@b85b1",
+      "displayName": "",
+      "id": "b85b1",
+      "name": "对象031.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 676
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "98ee4": {
+      "importer": "gltf-embeded-image",
+      "uuid": "75e61a65-3869-4f62-bce2-c91711ea2944@98ee4",
+      "displayName": "",
+      "id": "98ee4",
+      "name": "贴图 #21.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "a4d9b": {
+      "importer": "texture",
+      "uuid": "75e61a65-3869-4f62-bce2-c91711ea2944@a4d9b",
+      "displayName": "",
+      "id": "a4d9b",
+      "name": "贴图 #21.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "75e61a65-3869-4f62-bce2-c91711ea2944@98ee4"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "07867": {
+      "importer": "gltf-material",
+      "uuid": "75e61a65-3869-4f62-bce2-c91711ea2944@07867",
+      "displayName": "",
+      "id": "07867",
+      "name": "Material #105.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0baca": {
+      "importer": "gltf-scene",
+      "uuid": "75e61a65-3869-4f62-bce2-c91711ea2944@0baca",
+      "displayName": "",
+      "id": "0baca",
+      "name": "药瓶底座.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "贴图 #21",
+        "uri": "75e61a65-3869-4f62-bce2-c91711ea2944@98ee4"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "75e61a65-3869-4f62-bce2-c91711ea2944@b85b1"
+      ],
+      "skeletons": [],
+      "textures": [
+        "75e61a65-3869-4f62-bce2-c91711ea2944@a4d9b"
+      ],
+      "materials": [
+        "75e61a65-3869-4f62-bce2-c91711ea2944@07867"
+      ],
+      "scenes": [
+        "75e61a65-3869-4f62-bce2-c91711ea2944@0baca"
+      ]
+    }
+  }
+}
