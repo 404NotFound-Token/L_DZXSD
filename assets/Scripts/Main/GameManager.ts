@@ -1,26 +1,38 @@
 import { resources } from 'cc';
-import { _decorator, Component, Node } from 'cc';
+import { _decorator, Component } from 'cc';
 import { ObjectPool } from '../Tools/ObjectPool';
+import { MainGame } from './MainGame';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameManager')
 export class GameManager extends Component {
 
     protected onLoad(): void {
-        resources.preloadDir("Prefab", (err, assets) => {
+        resources.loadDir("Prefab", (err, assets) => {
+            const assetsInfo = assets.map(asset => ({
+                type: asset.constructor.name,
+                name: asset.name,
+                uuid: asset.uuid
+            }));
+
             if (err) {
-                console.log(`资源加载异常：${err}`);
+                console.log(`资源加载异常：${JSON.stringify(assetsInfo, null, 2)}`);
             } else {
-                console.log(`资源加载成功数量：${assets.length}`);
+                console.log(`资源加载成功：${JSON.stringify(assetsInfo, null, 2)}`);
             }
         });
-        this.initPool();
+
+        this.scheduleOnce(() => {
+            this.initPool();
+        }, 1);
     }
 
-    initPool() {
+    private initPool() {
         ObjectPool.ObjectPoolInit([
-            { path: "zhizhu", num: 10 },
+            { path: "Spider", num: 10 },
         ]);
+
+        MainGame.ins.loadSpider();
     }
 }
 
