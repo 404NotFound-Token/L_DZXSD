@@ -12,6 +12,7 @@ import { ObjectPool } from '../Tools/ObjectPool';
 import { camera_worldRotation } from './CameraCtrl';
 import { UIOpacity } from 'cc';
 import { SpiderHome } from './SpiderHome';
+import { MainGame } from './MainGame';
 const { ccclass, property } = _decorator;
 
 export enum SpiderState {
@@ -203,6 +204,7 @@ export class Spider extends Component {
         this.hpTween = null;
         Tween.stopAllByTarget(this.node);
         this.reset();
+        MainGame.ins.dropMeat(this.node.worldPosition.clone());
         SpiderHome.recycleSpider(this);
         // ObjectPool.PutPoolItem("Spider", this.node);
     }

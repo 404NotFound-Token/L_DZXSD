@@ -36,6 +36,7 @@ export class GameManager extends Component {
     private initPool() {
         ObjectPool.ObjectPoolInit([
             { path: "Spider", num: 10 },
+            { path: "Meat", num: 100 },
         ]);
 
         IEvent.emit(EventType.GameStart);
