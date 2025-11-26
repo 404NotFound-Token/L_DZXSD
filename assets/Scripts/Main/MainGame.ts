@@ -46,6 +46,7 @@ export class MainGame extends Component {
                 () => {
                     Effect.jellyEffect(meat)
                         .call(() => {
+                            meat.setScale(new Vec3(0.5, 0.5, 0.5));
                             meat.getComponent(Resources).isCheck = true;
                             meat.getComponent(Resources).checkAnnie();
                         })

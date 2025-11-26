@@ -20,6 +20,14 @@ export const SpiderInfo = {
     AttackInterval: 1,
 }
 
+export const ArrowTowerInfo = {
+    HP: 10,
+    ArrowMoveSpeed: 100,
+    AttackPower: 5,
+    AttackRange: 20,
+    AttackInterval: 1,
+}
+
 /**
  * 碰撞组
  */
@@ -29,4 +37,6 @@ export enum ColliderGroup {
     Spider = 1 << 2,
     DiTie = 1 << 3,
 }
+
+
 

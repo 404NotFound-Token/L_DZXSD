@@ -13,6 +13,7 @@ import { TransformUtils } from '../Tools/TransformUtils';
 import { ObjectPool } from '../Tools/ObjectPool';
 import { Label } from 'cc';
 import { Sprite } from 'cc';
+import { Tween } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('DiTie')
@@ -29,6 +30,9 @@ export class DiTie extends Component {
 
     @property
     maxNumber: number = 50;
+
+    @property({ type: Node, tooltip: "改地贴要解锁的建筑" })
+    private build: Node = null;
 
     private currentCount: number = 0;
 
@@ -78,15 +82,16 @@ export class DiTie extends Component {
         Annie.ins.meatBag.remove(meat, this.node, ((success) => {
             if (success) {
                 meat.isCheck = true;
+                Tween.stopAllByTarget(meat.node);
                 ObjectPool.PutPoolItem("Meat", meat.node);
                 this.currentCount++;
                 if (this.currentCount >= this.maxNumber) {
+                    this.build.active = true;
                     this.node.active = false;
                     return;
                 };
                 this.label.string = `${this.currentCount}/${this.maxNumber}`;
                 this.green.fillRange = this.currentCount / this.maxNumber;
-
             }
         }))
     }
