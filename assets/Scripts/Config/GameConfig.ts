@@ -1,11 +1,11 @@
 /**
- * 角色信息
+ * 安妮信息
  */
-export const PlayerInfo = {
+export const AnnieInfo = {
     HP: 100,
     Speed: 7,
-    AttackPower: 1,
-    AttackRange: 1,
+    AttackPower: 5,
+    AttackRange: 3,
     AttackInterval: 1,
 }
 
@@ -13,7 +13,7 @@ export const PlayerInfo = {
  * 蜘蛛信息
  */
 export const SpiderInfo = {
-    HP: 1,
+    HP: 10,
     Speed: 5,
     AttackPower: 1,
     AttackRange: 3,

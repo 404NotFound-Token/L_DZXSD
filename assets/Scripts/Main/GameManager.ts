@@ -2,6 +2,8 @@ import { resources } from 'cc';
 import { _decorator, Component } from 'cc';
 import { ObjectPool } from '../Tools/ObjectPool';
 import { MainGame } from './MainGame';
+import { PhysicsSystem } from 'cc';
+import { EventType, IEvent } from '../Config/IEvent';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameManager')
@@ -22,6 +24,10 @@ export class GameManager extends Component {
             }
         });
 
+        PhysicsSystem.instance.enable = true;
+        PhysicsSystem.instance.debugDrawFlags = 1;
+
+
         this.scheduleOnce(() => {
             this.initPool();
         }, 1);
@@ -32,7 +38,7 @@ export class GameManager extends Component {
             { path: "Spider", num: 10 },
         ]);
 
-        MainGame.ins.loadSpider();
+        IEvent.emit(EventType.GameStart);
     }
 }
 

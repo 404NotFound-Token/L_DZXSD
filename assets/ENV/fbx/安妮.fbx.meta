@@ -15,14 +15,20 @@
       "name": "standAttack.animation",
       "userData": {
         "gltfIndex": 0,
-        "wrapMode": 2,
-        "speed": 1,
+        "wrapMode": 0,
+        "speed": 0.5,
         "sample": 30,
         "span": {
           "from": 2.3333333333333335,
           "to": 2.966666666666667
         },
-        "events": []
+        "events": [
+          {
+            "frame": 0.43333333333333335,
+            "func": "onAttacked",
+            "params": []
+          }
+        ]
       },
       "ver": "1.0.17",
       "imported": true,
@@ -122,14 +128,20 @@
       "name": "runAttack.animation",
       "userData": {
         "gltfIndex": 0,
-        "wrapMode": 2,
-        "speed": 1,
+        "wrapMode": 0,
+        "speed": 0.5,
         "sample": 30,
         "span": {
           "from": 3.6666666666666665,
           "to": 4.3
         },
-        "events": []
+        "events": [
+          {
+            "frame": 0.43333333333333335,
+            "func": "onAttacked",
+            "params": []
+          }
+        ]
       },
       "ver": "1.0.17",
       "imported": true,
@@ -258,16 +270,16 @@
             "name": "standAttack",
             "from": 2.3333333333333335,
             "to": 2.966666666666667,
-            "wrapMode": 2,
-            "speed": 1,
+            "wrapMode": 0,
+            "speed": 0.5,
             "previousId": "48794"
           },
           {
             "name": "runAttack",
             "from": 3.6666666666666665,
             "to": 4.3,
-            "wrapMode": 2,
-            "speed": 1,
+            "wrapMode": 0,
+            "speed": 0.5,
             "previousId": "303db"
           },
           {
