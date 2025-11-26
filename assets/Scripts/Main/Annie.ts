@@ -40,7 +40,7 @@ export class Annie extends Component {
     private skeAnim: SkeletalAnimation = null;
 
     @property(Bag)
-    public bag: Bag<Resources> = null;
+    public meatBag: Bag<Resources> = null;
 
     private rigidBody: RigidBody = null;
     private collider: Collider = null;

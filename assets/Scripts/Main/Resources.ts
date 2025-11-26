@@ -23,24 +23,32 @@ export class Resources extends Component {
     checkAnnie() {
         this.schedule(() => {
             if (!this.isCheck) return;
-
-            const bag = Annie.ins.bag
-
-            const bol = Vec3.distance(this.node.worldPosition, bag.node.worldPosition) <= this.checkRange;
+            const bol = Vec3.distance(this.node.worldPosition, Annie.ins.node.worldPosition) <= this.checkRange;
             if (bol) {
-                bag.add(this,
-                    (success) => {
-                        if (success) {
-                            console.log("物品成功添加到背包");
-                        } else {
-                            console.log("添加失败");
-                        }
-                    },
-                    0.5
-                );
+                switch (this.resourceType) {
+                    case ResourceType.Meat:
+                        this.colletMeat();
+
+                        break;
+                }
             }
         }, 0.1)
     }
+
+    private colletMeat() {
+        const meatBag = Annie.ins.meatBag;
+        meatBag.add(this,
+            (success) => {
+                if (success) {
+                    this.isCheck = false;
+                }
+            },
+            0.5
+        );
+    }
+
+
+
 }
 
 

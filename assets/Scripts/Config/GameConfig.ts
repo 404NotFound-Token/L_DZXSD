@@ -27,5 +27,6 @@ export enum ColliderGroup {
     Default = 1 << 0,
     Annie = 1 << 1,
     Spider = 1 << 2,
+    DiTie = 1 << 3,
 }
 

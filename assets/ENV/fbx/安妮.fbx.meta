@@ -16,7 +16,7 @@
       "userData": {
         "gltfIndex": 0,
         "wrapMode": 0,
-        "speed": 0.7,
+        "speed": 1,
         "sample": 30,
         "span": {
           "from": 2.3333333333333335,
@@ -140,7 +140,7 @@
       "userData": {
         "gltfIndex": 0,
         "wrapMode": 0,
-        "speed": 0.7,
+        "speed": 1,
         "sample": 30,
         "span": {
           "from": 3.6666666666666665,
@@ -282,7 +282,7 @@
             "from": 2.3333333333333335,
             "to": 2.966666666666667,
             "wrapMode": 0,
-            "speed": 0.7,
+            "speed": 1,
             "previousId": "48794"
           },
           {
@@ -290,7 +290,7 @@
             "from": 3.6666666666666665,
             "to": 4.3,
             "wrapMode": 0,
-            "speed": 0.7,
+            "speed": 1,
             "previousId": "303db"
           },
           {

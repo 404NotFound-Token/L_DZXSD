@@ -17,38 +17,42 @@ export class MainGame extends Component {
     }
 
     public dropMeat(startPos: Vec3) {
-        const meat = ObjectPool.GetPoolItem("Meat", this.node);
-        meat.setWorldPosition(startPos);
+        for (let i = 0; i < 5; i++) {
+            const meat = ObjectPool.GetPoolItem("Meat", this.node);
+            meat.setWorldPosition(startPos);
 
-        const randomRadius = 1; // 随机半径范围
-        const randomAngle = Math.random() * Math.PI;
-        const offsetX = Math.cos(randomAngle) * randomRadius;
-        const offsetZ = Math.sin(randomAngle) * randomRadius;
+            const randomRadius = 1; // 随机半径范围
+            const randomAngle = Math.random() * Math.PI;
+            const offsetX = Math.cos(randomAngle) * randomRadius;
+            const offsetZ = Math.sin(randomAngle) * randomRadius;
 
-        const endPos = new Vec3(
-            startPos.x + offsetX,
-            0,
-            startPos.z + offsetZ
-        );
+            const endPos = new Vec3(
+                startPos.x + offsetX,
+                0,
+                startPos.z + offsetZ
+            );
 
-        const ctrlPos = new Vec3(
-            startPos.x + offsetX * 0.5,
-            2,
-            startPos.z + offsetZ * 0.5
-        );
+            const ctrlPos = new Vec3(
+                startPos.x + offsetX * 0.5,
+                2,
+                startPos.z + offsetZ * 0.5
+            );
 
-        Bezier.createBezierTween(
-            meat,
-            startPos, ctrlPos,
-            endPos,
-            0.2,
-            () => {
-                Effect.jellyEffect(meat)
-                    .call(() => {
-                        meat.getComponent(Resources).checkAnnie();
-                    })
-                    .start();
-            });
+            Bezier.createBezierTween(
+                meat,
+                startPos, ctrlPos,
+                endPos,
+                0.2,
+                () => {
+                    Effect.jellyEffect(meat)
+                        .call(() => {
+                            meat.getComponent(Resources).isCheck = true;
+                            meat.getComponent(Resources).checkAnnie();
+                        })
+                        .start();
+                });
+        }
+
     }
 }
 
