@@ -4,6 +4,7 @@ import { Spider } from './Spider';
 import { Vec3 } from 'cc';
 import { Bezier } from '../Tools/Bezier';
 import { Effect } from '../Tools/Effect';
+import { Resources } from './Resources';
 const { ccclass, property } = _decorator;
 
 @ccclass('MainGame')
@@ -43,9 +44,9 @@ export class MainGame extends Component {
             0.2,
             () => {
                 Effect.jellyEffect(meat)
-                    // .call(() => {
-                    //     _node.getComponent(Resources).init();
-                    // })
+                    .call(() => {
+                        meat.getComponent(Resources).checkAnnie();
+                    })
                     .start();
             });
     }

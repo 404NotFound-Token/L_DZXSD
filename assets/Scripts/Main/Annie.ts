@@ -27,22 +27,25 @@ export class Annie extends Component {
 
     public static ins: Annie = null;
 
+    @property(Joystick)
+    private joystick: Joystick = null!;
+
     @property(Node)
-    private joystick: Node = null!;
+    public bag: Node = null;
 
     @property(Camera)
     private mainCamera: Camera = null!;
+
+    @property(SkeletalAnimation)
+    private skeAnim: SkeletalAnimation = null;
+
+    private rigidBody: RigidBody = null;
+    private collider: Collider = null;
 
     // 变量
     private rotationSpeed: number = 10;
     private state: AnnieState = null;
     private attack_target: Spider = null; // 攻击目标
-
-    // 组件
-    private rigidBody: RigidBody = null;
-    private collider: Collider = null;
-    private skeAnim: SkeletalAnimation = null;
-    private joystickComp: Joystick = null;
 
     // vec3缓存
     private moveDirection: Vec3 = new Vec3();
@@ -55,8 +58,6 @@ export class Annie extends Component {
 
         this.rigidBody = this.getComponent(RigidBody);
         this.collider = this.getComponent(Collider);
-        this.skeAnim = this.getComponent(SkeletalAnimation);
-        this.joystickComp = this.joystick.getComponent(Joystick);
 
         this.playAni(AnnieState.Idle);
     }
@@ -110,7 +111,7 @@ export class Annie extends Component {
                 targetAngle = Math.atan2(this.moveDirection.x, this.moveDirection.z) * 180 / Math.PI;
 
                 const currentAngle = this.node.eulerAngles.y;
-                let newAngle = this.lerpAngle(currentAngle, targetAngle, this.rotationSpeed * deltaTime);
+                let newAngle = this.lerpAngle(currentAngle, -targetAngle, this.rotationSpeed * deltaTime);
 
                 this.node.setRotationFromEuler(0, newAngle, 0);
             }
