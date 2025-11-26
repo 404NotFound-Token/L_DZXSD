@@ -12,6 +12,9 @@ import { Spider } from './Spider';
 import { isValid } from 'cc';
 import { Collider } from 'cc';
 import { SpiderHome } from './SpiderHome';
+import { animation } from 'cc';
+import { Bag } from './Bag';
+import { Resources } from './Resources';
 const { ccclass, property } = _decorator;
 
 export enum AnnieState {
@@ -30,14 +33,14 @@ export class Annie extends Component {
     @property(Joystick)
     private joystick: Joystick = null!;
 
-    @property(Node)
-    public bag: Node = null;
-
     @property(Camera)
     private mainCamera: Camera = null!;
 
     @property(SkeletalAnimation)
     private skeAnim: SkeletalAnimation = null;
+
+    @property(Bag)
+    public bag: Bag<Resources> = null;
 
     private rigidBody: RigidBody = null;
     private collider: Collider = null;
@@ -46,6 +49,7 @@ export class Annie extends Component {
     private rotationSpeed: number = 10;
     private state: AnnieState = null;
     private attack_target: Spider = null; // 攻击目标
+    private isAttacking: boolean = false;
 
     // vec3缓存
     private moveDirection: Vec3 = new Vec3();
@@ -56,37 +60,37 @@ export class Annie extends Component {
     protected onLoad(): void {
         Annie.ins = this;
 
-        this.rigidBody = this.getComponent(RigidBody);
-        this.collider = this.getComponent(Collider);
+        this.rigidBody = this.node.parent.getComponent(RigidBody);
+        this.collider = this.node.parent.getComponent(Collider);
+
+        console.log("123", this.skeAnim)
 
         this.playAni(AnnieState.Idle);
     }
 
     // protected start(): void {
-    //     this.collider.on('onTriggerEnter', this._onTriggerEnter, this);
-    //     this.collider.on('onTriggerExit', this.onTriggerExit, this);
+    //     const defaultClip = this.skeAnim.defaultClip
+    //     defaultClip.events = [
+    //         {
+    //             frame: 0.5,
+    //             func: 'annieOnAttacked',
+    //             params: []
+    //         }
+    //     ];
+    //     this.skeAnim.clips = [defaultClip];
     // }
 
-    // protected onDestroy(): void {
-    //     this.collider.off('onTriggerEnter', this._onTriggerEnter, this);
-    //     this.collider.off('onTriggerExit', this.onTriggerExit, this);
-    // }
-
-    // private _onTriggerEnter(e: ITriggerEvent) {
-    //     this.attack_target = e.otherCollider.node.getComponent(Spider);
-    // }
-
-    // private onTriggerExit(e: ITriggerEvent) {
-    //     this.attack_target = null;
-    // }
-
-    onAttacked() {
-        this.attack_target.hurt(AnnieInfo.AttackPower);
-        this.playAni(AnnieState.Idle);
+    public onAttacked() {
+        console.log("攻击结束");
+        if (this.attack_target && isValid(this.attack_target)) {
+            this.attack_target.hurt(AnnieInfo.AttackPower);
+            this.attack_target = null;
+            this.playAni(AnnieState.Idle);
+        }
     }
 
     update(deltaTime: number) {
-        this.attack_target = SpiderHome.getSpiderByTargetRange(this.node, AnnieInfo.AttackRange);
+        this.attack_target = SpiderHome.getSpiderByTargetRange(this.node.parent, AnnieInfo.AttackRange);
         const joystickComp = this.joystick.getComponent(Joystick);
         const joystickDir = joystickComp.direction;
         this.moveDirection.set(Vec3.ZERO);
@@ -110,10 +114,10 @@ export class Annie extends Component {
                 let targetAngle: number;
                 targetAngle = Math.atan2(this.moveDirection.x, this.moveDirection.z) * 180 / Math.PI;
 
-                const currentAngle = this.node.eulerAngles.y;
-                let newAngle = this.lerpAngle(currentAngle, -targetAngle, this.rotationSpeed * deltaTime);
+                const currentAngle = this.node.parent.eulerAngles.y;
+                let newAngle = this.lerpAngle(currentAngle, targetAngle, this.rotationSpeed * deltaTime);
 
-                this.node.setRotationFromEuler(0, newAngle, 0);
+                this.node.parent.setRotationFromEuler(0, newAngle, 0);
             }
 
             // 设置线性速度
@@ -126,15 +130,17 @@ export class Annie extends Component {
             // this.cc.move(this.velocity.multiplyScalar(deltaTime));
             this.rigidBody.setLinearVelocity(this.velocity);
 
-            if (this.attack_target) {
+            if (this.attack_target && isValid(this.attack_target)) {
                 this.rotateTowardsTarget();
                 this.playAni(AnnieState.RunAttack);
             } else {
                 this.playAni(AnnieState.Run);
             }
+
         } else {
             this.rigidBody.setLinearVelocity(Vec3.ZERO);
-            if (this.attack_target) {
+
+            if (this.attack_target && isValid(this.attack_target)) {
                 this.rotateTowardsTarget();
                 this.playAni(AnnieState.StandAttack);
             } else {
@@ -154,22 +160,16 @@ export class Annie extends Component {
     private rotateTowardsTarget() {
         if (!this.attack_target) return;
 
-        this.node.lookAt(this.attack_target.node.worldPosition);
-        const currentRotation = this.node.eulerAngles.clone();
+        this.node.parent.lookAt(this.attack_target.node.worldPosition);
+        const currentRotation = this.node.parent.eulerAngles.clone();
         currentRotation.y += 180;
-        this.node.eulerAngles = currentRotation;
+        this.node.parent.eulerAngles = currentRotation;
     }
 
     private playAni(name: AnnieState) {
         if (this.state === name) return;
         this.state = name;
         this.skeAnim.play(name);
-
-        if (name === AnnieState.RunAttack || name === AnnieState.StandAttack) {
-            // this.scheduleOnce(() => {
-            //     this.attack_target.hurt(AnnieInfo.AttackPower);
-            // }, 0.5);
-        }
     }
 }
 

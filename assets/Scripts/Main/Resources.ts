@@ -20,24 +20,14 @@ export class Resources extends Component {
 
     private checkRange: number = 30;
 
-    // private annie: Node = null;
-    // private annieComp: Annie = null;
-
-
-    // protected onLoad(): void {
-    //     this.annie = Annie.ins.node;
-    //     this.annieComp = this.annie.getComponent(Annie);
-    // }
-
     checkAnnie() {
         this.schedule(() => {
             if (!this.isCheck) return;
 
-            const annie = Annie.ins.node;
+            const bag = Annie.ins.bag
 
-            const bol = Vec3.distance(this.node.worldPosition, annie.worldPosition) <= this.checkRange;
+            const bol = Vec3.distance(this.node.worldPosition, bag.node.worldPosition) <= this.checkRange;
             if (bol) {
-                const bag = annie.getComponent(Bag);
                 bag.add(this,
                     (success) => {
                         if (success) {

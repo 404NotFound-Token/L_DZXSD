@@ -24,7 +24,7 @@
         },
         "events": [
           {
-            "frame": 0.43333333333333335,
+            "frame": 0.6333333333333333,
             "func": "onAttacked",
             "params": []
           }
@@ -87,7 +87,18 @@
           "from": 0,
           "to": 1
         },
-        "events": []
+        "events": [
+          {
+            "frame": 0.6333333333333333,
+            "func": "onAttacked",
+            "params": []
+          },
+          {
+            "frame": 0.6333333333333333,
+            "func": "onAttacked",
+            "params": []
+          }
+        ]
       },
       "ver": "1.0.17",
       "imported": true,
@@ -137,7 +148,7 @@
         },
         "events": [
           {
-            "frame": 0.43333333333333335,
+            "frame": 0.6333333333333333,
             "func": "onAttacked",
             "params": []
           }

@@ -193,14 +193,17 @@ export class Spider extends Component {
 
     // #region 动画帧事件
     private onAttacked() {
+        console.log("蜘蛛攻击");
         this.playAni(SpiderState.Idle);
     }
 
     private onHurted() {
+        console.log("蜘蛛受伤");
         this.isHurting = false;
     }
 
     private onDied() {
+        console.log("蜘蛛死亡");
         this.hpTween = null;
         Tween.stopAllByTarget(this.node);
         this.reset();

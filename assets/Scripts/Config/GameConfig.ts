@@ -3,10 +3,10 @@
  */
 export const AnnieInfo = {
     HP: 100,
-    Speed: 7,
+    Speed: 10,
     AttackPower: 5,
     AttackRange: 3,
-    AttackInterval: 1,
+    AttackInterval: 3,
 }
 
 /**
