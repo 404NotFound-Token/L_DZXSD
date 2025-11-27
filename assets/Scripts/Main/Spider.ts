@@ -147,19 +147,7 @@ export class Spider extends Component {
     public hurt(damage: number) {
         this.currentHP -= damage;
 
-        tween(this.barSprite)
-            .to(0.1, { fillRange: this.currentHP / SpiderInfo.HP })
-            .call(() => {
-                tween(this.barBgSprite)
-                    .to(0.1, { fillRange: this.currentHP / SpiderInfo.HP })
-                    .call(() => {
-                        if (this.currentHP <= 0) {
-                            this.hp.active = false;
-                        }
-                    })
-                    .start();
-            })
-            .start();
+        this.updateHPUI();
 
         if (this.currentHP <= 0) {
             this.isDieing = true;
@@ -179,6 +167,22 @@ export class Spider extends Component {
         }
     }
 
+    updateHPUI() {
+        tween(this.barSprite)
+            .to(0.1, { fillRange: this.currentHP / SpiderInfo.HP })
+            .call(() => {
+                tween(this.barBgSprite)
+                    .to(0.1, { fillRange: this.currentHP / SpiderInfo.HP })
+                    .call(() => {
+                        if (this.currentHP <= 0) {
+                            this.hp.active = false;
+                        }
+                    })
+                    .start();
+            })
+            .start();
+    }
+
     private reset() {
         this.target = null;
         this.state = null;
@@ -193,17 +197,14 @@ export class Spider extends Component {
 
     // #region 动画帧事件
     private onAttacked() {
-        console.log("蜘蛛攻击");
         this.playAni(SpiderState.Idle);
     }
 
     private onHurted() {
-        console.log("蜘蛛受伤");
         this.isHurting = false;
     }
 
     private onDied() {
-        console.log("蜘蛛死亡");
         this.hpTween = null;
         Tween.stopAllByTarget(this.node);
         this.reset();

@@ -11,7 +11,7 @@ export const AnnieInfo = {
     Speed: 10,
     AttackPower: 5,
     AttackRange: 3,
-    AttackInterval: 3,
+    AttackInterval: 1,
 }
 
 /**
@@ -25,12 +25,21 @@ export const SpiderInfo = {
     AttackInterval: 1,
 }
 
-export const ArrowTowerInfo = {
-    HP: 10,
-    ArrowMoveSpeed: 100,
-    AttackPower: 5,
-    AttackRange: 20,
-    AttackInterval: 1,
+export const TowerInfo = {
+    Arrow: {
+        HP: 10,
+        ArrowMoveSpeed: 100,
+        AttackPower: 10,
+        AttackRange: 20,
+        AttackInterval: 1,
+    },
+    Cannon: {
+        HP: 10,
+        CannonMoveSpeed: 100,
+        AttackPower: 10,
+        AttackRange: 20,
+        AttackInterval: 3,
+    },
 }
 
 /**

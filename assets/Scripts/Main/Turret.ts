@@ -5,6 +5,9 @@ import { Vec3 } from 'cc';
 import { Bezier } from '../Tools/Bezier';
 import { Tween } from 'cc';
 import { isValid } from 'cc';
+import { TowerInfo } from '../Config/GameConfig';
+import { tween } from 'cc';
+import { Utils } from '../Tools/Utils';
 const { ccclass, property } = _decorator;
 
 @ccclass('Turret')
@@ -16,39 +19,68 @@ export class Turret extends Component {
     @property(Node)
     towerHead: Node = null;
 
+    @property(Node)
+    bulletParent: Node = null;
+
     protected start(): void {
         this.schedule(() => {
             this.shootCannonBall();
-        }, 1);
+        }, TowerInfo.Cannon.AttackInterval);
     }
-
-    bezierTween: Tween<Node> = null;
 
     /**
      * 发射炮弹
      */
     private shootCannonBall() {
-        const cannonBall = ObjectPool.GetPoolItem("CannonBall", this.shootPoint);
-        const spider = SpiderHome.getSpiderByTargetRange(this.shootPoint, 20);
+        const cannonBall = ObjectPool.GetPoolItem("CannonBall", this.bulletParent);
+        cannonBall.setWorldPosition(this.shootPoint.worldPosition);
+        const spider = SpiderHome.getSpiderByTargetRange(this.node, TowerInfo.Cannon.AttackRange);
         if (spider && isValid(spider.node)) {
-            cannonBall.lookAt(spider.node.worldPosition);
+            console.log("发射炮弹");
+            // cannonBall.lookAt(spider.node.worldPosition);
             this.towerHead.lookAt(spider.node.worldPosition, Vec3.UP);
 
+            const startPos = this.shootPoint.worldPosition.clone();
+            const endPos = spider.node.worldPosition.clone();
+            let controlPos = new Vec3();
+            controlPos = Vec3.add(controlPos, startPos, endPos)
+            controlPos.multiplyScalar(0.5);
+            controlPos.y += 5;
 
-            const startPos = this.shootPoint.worldPosition;
-            const endPos = spider.node.worldPosition;
-            const ctrlPos = this.shootPoint.worldPosition.add(new Vec3(0, 5, 0));
+            let worldPos = new Vec3();
+            tween({ process: 0 })
+                .to(0.5, { process: 1 }, {
+                    onUpdate: (t) => {
+                        Utils.bezierCurve(t.process, startPos, controlPos, endPos, worldPos)
+                        cannonBall.setWorldPosition(worldPos);
+                        cannonBall.lookAt(worldPos);
+                    }
+                })
+                .call(() => {
+                    ObjectPool.PutPoolItem("CannonBall", cannonBall);
+                    const spiders = SpiderHome.findSpidersInRange(endPos, 3);
+                    spiders.forEach(spider => {
+                        console.log("命中", spider);
+                        spider.hurt(TowerInfo.Cannon.AttackPower);
+                    });
+                })
+                .start();
+            // new Tween(cannonBall)
+            //     .bezierTo3D(1, startPos, controlPos, endPos)
+            //     .call(() => {
+            //         ObjectPool.PutPoolItem("CannonBall", cannonBall);
+            //         const spiders = SpiderHome.findSpidersInRange(endPos, 3);
+            //         spiders.forEach(spider => {
+            //             console.log("命中", spider);
+            //             spider.hurt(TowerInfo.Cannon.AttackPower);
+            //         });
+            //     })
+            //     .start();
 
-            if (this.bezierTween) {
-                this.bezierTween.start();
-            } else {
-                this.bezierTween = new Tween(cannonBall)
-                    .bezierTo3D(1, startPos, ctrlPos, endPos)
-                    .call(() => {
-                        ObjectPool.PutPoolItem("CannonBall", cannonBall);
-                    })
-                    .start();
-            }
+
+        } else {
+            console.log("没有目标");
+            ObjectPool.PutPoolItem("CannonBall", cannonBall);
         }
     }
 }

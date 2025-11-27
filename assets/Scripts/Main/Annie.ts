@@ -23,6 +23,8 @@ export enum AnnieState {
     Die = "die",
     RunAttack = "runAttack",
     StandAttack = "standAttack",
+
+    Attack = "attack",
 }
 
 @ccclass('Annie')
@@ -63,25 +65,10 @@ export class Annie extends Component {
         this.rigidBody = this.node.parent.getComponent(RigidBody);
         this.collider = this.node.parent.getComponent(Collider);
 
-        console.log("123", this.skeAnim)
-
         this.playAni(AnnieState.Idle);
     }
 
-    // protected start(): void {
-    //     const defaultClip = this.skeAnim.defaultClip
-    //     defaultClip.events = [
-    //         {
-    //             frame: 0.5,
-    //             func: 'annieOnAttacked',
-    //             params: []
-    //         }
-    //     ];
-    //     this.skeAnim.clips = [defaultClip];
-    // }
-
     public onAttacked() {
-        console.log("攻击结束");
         if (this.attack_target && isValid(this.attack_target)) {
             this.attack_target.hurt(AnnieInfo.AttackPower);
             this.attack_target = null;
@@ -167,6 +154,15 @@ export class Annie extends Component {
     }
 
     private playAni(name: AnnieState) {
+        // if (name === AnnieState.RunAttack || name === AnnieState.StandAttack) {
+        //     if (this.state === AnnieState.Attack) return;
+        //     this.skeAnim.play(name);
+        //     this.state = AnnieState.Attack;
+        // } else {
+        //     if (this.state === name) return;
+        //     this.state = name;
+        //     this.skeAnim.play(name);
+        // }
         if (this.state === name) return;
         this.state = name;
         this.skeAnim.play(name);

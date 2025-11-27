@@ -36,6 +36,8 @@ export class SpiderHome extends Component {
         IEvent.off(EventType.Upgrade, this.upgrade, this);
     }
 
+    private a: number = 0;
+
     private gameStart() {
         if (this.isLoad) {
             this.loadSpider();
@@ -48,7 +50,21 @@ export class SpiderHome extends Component {
     }
 
     private upgrade() {
-        this.isLoad = true;
+        // this.isLoad = true;
+        this.unscheduleAllCallbacks();
+
+        this.schedule(() => {
+            for (let i = 0; i < SpiderHome.spiderMax; i++) {
+                this.scheduleOnce(() => {
+                    const spider = ObjectPool.GetPoolItem("Spider", this.initPoint);
+                    spider.scale = this.spiderScale;
+                    const spiderComp = spider.getComponent(Spider);
+                    spiderComp.initSpider(this.temporaryTarget.worldPosition);
+                    SpiderHome.spiderList.push(spiderComp);
+                }, i * 0.5)
+            }
+        }, 5);
+
     }
 
     private loadSpider() {
@@ -66,14 +82,23 @@ export class SpiderHome extends Component {
     /**
      * 返回最近的蜘蛛
      * @param target 目标点
+     * @param range 范围
      * @returns 蜘蛛
      */
-    public static getSpiderByTargetRange(target: Node, range: number): Spider {
+    public static getSpiderByTargetRange(target: Node | Vec3, range: number): Spider {
         let minDistance = Number.MAX_VALUE;
         let minSpider: Spider = null;
+
+        let targetPos: Vec3 = new Vec3();
+        if (target instanceof Node) {
+            targetPos = target.worldPosition;
+        } else {
+            targetPos = target;
+        }
+
         for (let i = 0; i < SpiderHome.spiderList.length; i++) {
             const spider = SpiderHome.spiderList[i];
-            const distance = Vec3.distance(spider.node.worldPosition, target.worldPosition);
+            const distance = Vec3.distance(spider.node.worldPosition, targetPos);
             if (distance < minDistance) {
                 minDistance = distance;
                 minSpider = spider;
@@ -83,6 +108,32 @@ export class SpiderHome extends Component {
             return null;
         }
         return minSpider;
+    }
+
+    /**
+     * 查找所有在范围内的蜘蛛
+     * @param target 目标点
+     * @param range 范围
+     * @returns 
+     */
+    public static findSpidersInRange(target: Node | Vec3, range: number): Spider[] {
+        const spiders: Spider[] = [];
+
+        let targetPos: Vec3 = new Vec3();
+        if (target instanceof Node) {
+            targetPos = target.worldPosition;
+        } else {
+            targetPos = target;
+        }
+
+        for (let i = 0; i < SpiderHome.spiderList.length; i++) {
+            const spider = SpiderHome.spiderList[i];
+            const distance = Vec3.distance(spider.node.worldPosition, targetPos);
+            if (distance < range) {
+                spiders.push(spider);
+            }
+        }
+        return spiders;
     }
 
     /**

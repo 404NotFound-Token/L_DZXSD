@@ -3,6 +3,9 @@ import { _decorator, Component, Node } from 'cc';
 import { Annie } from './Annie';
 import { Vec3 } from 'cc';
 import { Bag } from './Bag';
+import { tween } from 'cc';
+import { ObjectPool } from '../Tools/ObjectPool';
+import { Tween } from 'cc';
 const { ccclass, property } = _decorator;
 
 export enum ResourceType {
@@ -20,7 +23,20 @@ export class Resources extends Component {
 
     private checkRange: number = 5;
 
+    public timerTween: Tween = null;
+
     checkAnnie() {
+
+        this.timerTween = tween(this.node)
+            .delay(30)
+            .call(() => {
+                if (this.resourceType == ResourceType.Meat) {
+                    ObjectPool.PutPoolItem("Meat", this.node);
+                }
+            })
+            .start();
+
+
         this.schedule(() => {
             if (!this.isCheck) return;
             const bol = Vec3.distance(this.node.worldPosition, Annie.ins.node.worldPosition) <= this.checkRange;
@@ -28,7 +44,6 @@ export class Resources extends Component {
                 switch (this.resourceType) {
                     case ResourceType.Meat:
                         this.colletMeat();
-
                         break;
                 }
             }
@@ -41,6 +56,7 @@ export class Resources extends Component {
             (success) => {
                 if (success) {
                     this.isCheck = false;
+                    Tween.stopAllByTarget(this.node);
                 }
             },
             0.5

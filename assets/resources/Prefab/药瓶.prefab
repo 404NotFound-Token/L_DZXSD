@@ -25,7 +25,7 @@
         "__id__": 26
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 30
@@ -547,6 +547,7 @@
     "towerHead": {
       "__id__": 13
     },
+    "bulletParent": null,
     "_id": ""
   },
   {
@@ -597,7 +598,7 @@
     "__prefab": {
       "__id__": 35
     },
-    "_group": 1,
+    "_group": 16,
     "_type": 2,
     "_mass": 1,
     "_allowSleep": true,
