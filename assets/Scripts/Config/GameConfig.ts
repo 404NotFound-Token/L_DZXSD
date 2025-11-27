@@ -1,3 +1,8 @@
+export const GameInfo = {
+    ArrowTowerMax: 2,
+    ArrowTowerCurrent: 0,
+}
+
 /**
  * 安妮信息
  */

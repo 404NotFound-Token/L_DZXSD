@@ -18,7 +18,7 @@ export class Resources extends Component {
 
     public isCheck: boolean = true;
 
-    private checkRange: number = 30;
+    private checkRange: number = 5;
 
     checkAnnie() {
         this.schedule(() => {
@@ -46,9 +46,6 @@ export class Resources extends Component {
             0.5
         );
     }
-
-
-
 }
 
 

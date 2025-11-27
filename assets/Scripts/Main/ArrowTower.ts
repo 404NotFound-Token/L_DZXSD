@@ -16,19 +16,21 @@ export class ArrowTower extends Component {
     towerHead: Node = null;
 
     protected start(): void {
-        this.shootArrow();
+        this.schedule(() => {
+            this.shootArrow();
+        }, ArrowTowerInfo.AttackInterval)
     }
 
     private shootArrow() {
-        this.schedule((() => {
-            const targetEnemy = SpiderHome.getSpiderByTargetRange(this.shootPoint, ArrowTowerInfo.AttackRange);
-            const arrow = ObjectPool.GetPoolItem("Arrow", this.shootPoint);
+        // this.schedule((() => {
+        const arrow = ObjectPool.GetPoolItem("Arrow", this.shootPoint);
+        const targetEnemy = SpiderHome.getSpiderByTargetRange(this.shootPoint, ArrowTowerInfo.AttackRange);
 
-            if (targetEnemy) {
-                this.towerHead.lookAt(targetEnemy.node.worldPosition);
-                arrow.lookAt(targetEnemy.node.worldPosition);
-            }
+        if (targetEnemy) {
+            this.towerHead.lookAt(targetEnemy.node.worldPosition);
+            arrow.lookAt(targetEnemy.node.worldPosition);
             arrow.getComponent(Arrow).init(targetEnemy);
-        }), ArrowTowerInfo.AttackInterval);
+        }
+        // }), ArrowTowerInfo.AttackInterval);
     }
 }

@@ -5,20 +5,38 @@ import { Vec3 } from 'cc';
 import { Bezier } from '../Tools/Bezier';
 import { Effect } from '../Tools/Effect';
 import { Resources } from './Resources';
+import { EventType, IEvent } from '../Config/IEvent';
+import { SpiderHome } from './SpiderHome';
+import { DiTie } from './DiTie';
 const { ccclass, property } = _decorator;
 
 @ccclass('MainGame')
 export class MainGame extends Component {
-
     public static ins: MainGame = null;
+
+
+    @property({ type: DiTie, displayName: "地贴", tooltip: "用于解锁炮塔" })
+    public diTie1: DiTie = null;
+
+    @property({ type: DiTie, displayName: "地贴", tooltip: "用于解锁炮塔" })
+    public diTie2: DiTie = null;
 
     protected onLoad(): void {
         MainGame.ins = this;
+
+        IEvent.on(EventType.Upgrade, this.upgrade, this)
+    }
+
+    upgrade() {
+        // SpiderHome.ins.isLoad = true;
+        this.diTie1.node.active = true;
+        this.diTie2.node.active = true;
     }
 
     public dropMeat(startPos: Vec3) {
         for (let i = 0; i < 5; i++) {
             const meat = ObjectPool.GetPoolItem("Meat", this.node);
+            meat.setScale(new Vec3(0.5, 0.5, 0.5));
             meat.setWorldPosition(startPos);
 
             const randomRadius = 1; // 随机半径范围
@@ -53,7 +71,6 @@ export class MainGame extends Component {
                         .start();
                 });
         }
-
     }
 }
 

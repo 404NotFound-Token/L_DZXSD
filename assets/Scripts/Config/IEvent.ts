@@ -6,4 +6,5 @@ export enum EventType {
 
     GameStart = "GameStart",
 
+    Upgrade = "Upgrade"
 }

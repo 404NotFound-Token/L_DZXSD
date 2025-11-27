@@ -24,9 +24,8 @@ export class GameManager extends Component {
             }
         });
 
-        PhysicsSystem.instance.enable = true;
-        PhysicsSystem.instance.debugDrawFlags = 1;
-
+        // PhysicsSystem.instance.enable = true;
+        // PhysicsSystem.instance.debugDrawFlags = 1;
 
         this.scheduleOnce(() => {
             this.initPool();
@@ -37,7 +36,8 @@ export class GameManager extends Component {
         ObjectPool.ObjectPoolInit([
             { path: "Spider", num: 10 },
             { path: "Meat", num: 100 },
-            { path: "Arrow", num: 100 },
+            { path: "Arrow", num: 20 },
+            { path: "CannonBall", num: 20 },
         ]);
 
         IEvent.emit(EventType.GameStart);

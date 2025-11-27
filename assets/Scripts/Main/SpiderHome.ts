@@ -3,10 +3,12 @@ import { EventType, IEvent } from '../Config/IEvent';
 import { ObjectPool } from '../Tools/ObjectPool';
 import { Spider } from './Spider';
 import { Vec3 } from 'cc';
+import { Tween } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('SpiderHome')
 export class SpiderHome extends Component {
+    public static ins: SpiderHome = null;
 
     @property(Node)
     initPoint: Node = null; // 出生点
@@ -23,11 +25,15 @@ export class SpiderHome extends Component {
     private spiderScale: Vec3 = new Vec3(5, 5, 5);
 
     protected onLoad(): void {
-        IEvent.on(EventType.GameStart, this.gameStart, this)
+        SpiderHome.ins = this;
+
+        IEvent.on(EventType.GameStart, this.gameStart, this);
+        IEvent.on(EventType.Upgrade, this.upgrade, this)
     }
 
     protected onDestroy(): void {
-        IEvent.off(EventType.GameStart, this.gameStart, this)
+        IEvent.off(EventType.GameStart, this.gameStart, this);
+        IEvent.off(EventType.Upgrade, this.upgrade, this);
     }
 
     private gameStart() {
@@ -39,6 +45,10 @@ export class SpiderHome extends Component {
                 this.loadSpider();
             }
         }, 10);
+    }
+
+    private upgrade() {
+        this.isLoad = true;
     }
 
     private loadSpider() {
@@ -84,6 +94,7 @@ export class SpiderHome extends Component {
         if (index !== -1) {
             SpiderHome.spiderList.splice(index, 1);
         }
+        Tween.stopAllByTarget(spider.node);
         ObjectPool.PutPoolItem("Spider", spider.node);
     }
 }

@@ -4,7 +4,7 @@ import { Collider } from 'cc';
 import { Enum } from 'cc';
 import { _decorator, Component, Node } from 'cc';
 import { ResourceType } from './Resources';
-import { ColliderGroup } from '../Config/GameConfig';
+import { ColliderGroup, GameInfo } from '../Config/GameConfig';
 import { Annie } from './Annie';
 import { director } from 'cc';
 import { Quat } from 'cc';
@@ -14,6 +14,7 @@ import { ObjectPool } from '../Tools/ObjectPool';
 import { Label } from 'cc';
 import { Sprite } from 'cc';
 import { Tween } from 'cc';
+import { EventType, IEvent } from '../Config/IEvent';
 const { ccclass, property } = _decorator;
 
 @ccclass('DiTie')
@@ -85,8 +86,12 @@ export class DiTie extends Component {
                 Tween.stopAllByTarget(meat.node);
                 ObjectPool.PutPoolItem("Meat", meat.node);
                 this.currentCount++;
-                if (this.currentCount >= this.maxNumber) {
+                if (this.currentCount == this.maxNumber) {
                     this.build.active = true;
+                    GameInfo.ArrowTowerCurrent += 1;
+                    if (GameInfo.ArrowTowerCurrent == GameInfo.ArrowTowerMax) {
+                        IEvent.emit(EventType.Upgrade);
+                    }
                     this.node.active = false;
                     return;
                 };

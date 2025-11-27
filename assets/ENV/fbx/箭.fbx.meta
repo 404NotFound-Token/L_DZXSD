@@ -1,0 +1,96 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "ee4bd374-6625-4524-9230-05d2d4ad0c30",
+  "files": [],
+  "subMetas": {
+    "f9bb4": {
+      "importer": "gltf-mesh",
+      "uuid": "ee4bd374-6625-4524-9230-05d2d4ad0c30@f9bb4",
+      "displayName": "",
+      "id": "f9bb4",
+      "name": "对象033.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 138
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "de754": {
+      "importer": "gltf-material",
+      "uuid": "ee4bd374-6625-4524-9230-05d2d4ad0c30@de754",
+      "displayName": "",
+      "id": "de754",
+      "name": "Material #109.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "901fb": {
+      "importer": "gltf-scene",
+      "uuid": "ee4bd374-6625-4524-9230-05d2d4ad0c30@901fb",
+      "displayName": "",
+      "id": "901fb",
+      "name": "箭.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "ee4bd374-6625-4524-9230-05d2d4ad0c30@f9bb4"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "ee4bd374-6625-4524-9230-05d2d4ad0c30@de754"
+      ],
+      "scenes": [
+        "ee4bd374-6625-4524-9230-05d2d4ad0c30@901fb"
+      ]
+    }
+  }
+}
